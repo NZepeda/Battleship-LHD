@@ -67,4 +67,3 @@ Grid::Grid()
         board[x][y]=letters[z];
     }
 
-#endif /* Grid_h */

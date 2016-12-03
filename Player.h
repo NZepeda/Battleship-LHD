@@ -31,6 +31,8 @@ private:
 	bool hunt;
 	
 public:
+    void setShips();
+    void attackShip(int, int);
     bool turn();
 	bool checkIfLose();
 	
