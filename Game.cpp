@@ -15,7 +15,6 @@ class Game {
 		
 		welcome();
 		
-		
 		play();
 		
 		

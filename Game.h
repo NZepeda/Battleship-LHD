@@ -16,7 +16,6 @@ class Game {
 	Game::Game();
 	void start();
 	
-	
 	private:
 	Player p1();
 	Player p2();

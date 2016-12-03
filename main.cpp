@@ -12,6 +12,7 @@ using namespace std;
 int main(){
 	bool cont = true;
 	char input = 'n';
+	
 	do{
 		Game game();
 		game.start();
