@@ -73,3 +73,20 @@ void Game::compTurn(){
 	
 };
 
+bool Game::turn() //player1 turn
+{
+	int answer1;
+	char answer2;
+	do
+	{
+		p1.turn()
+		{
+			cout << "Please enter Row number: ";
+			cin >> answer1;
+			cout << "please enter Column letter: ";
+			cin >> answer2;
+		}
+
+	} while (!p1.checkField(answer1, answer2));
+		return;
+};
