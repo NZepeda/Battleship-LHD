@@ -31,6 +31,9 @@ private:
     vector<int> y;
     
     void place();
+    int findElementIndex(int);
+    bool findElementInYVector(int, int);
+    void removeShipCoordinateAtIndex(int);
     
     
 };
