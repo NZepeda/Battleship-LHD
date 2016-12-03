@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Player.h"
 #include <iostream>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -86,20 +87,49 @@ void Game::compTurn(){
 	
 };
 
-bool Game::turn() //player1 turn
+// The first turn for the player.
+void Game::turn()
 {
-	int answer1;
-	char answer2;
+	int x, y = -1;
+	char answer;
+	bool cont = true;
+	// Continually asks the user until they input correct input.
 	do
 	{
-		p1.turn()
-		{
+		// Makes sure the input is the proper form.
+		try {
 			cout << "Please enter Row number: ";
-			cin >> answer1;
+			cin >> x;
 			cout << "please enter Column letter: ";
-			cin >> answer2;
-		}
+			cin >> answer;
+		
+			// Used to convert the user's char input to a number
+			char abc[10]={'A', 'B', 'C', 'D', 'E','F','G','H', 'I', 'J'};
+			
+			// Gets the number from the letter if they gave proper input
+			for (int i = 0; i < 10; i++){
+				if (abc[i] == toUpper(answer)
+					y = i;
+				
+			}
+		
+			// throws exception if x is not in the range, or y never get set
+			if (x > 10 || x < 1 || y == -1){
+				throw;
+				
+			}
 
-	} while (!p1.checkField(answer1, answer2));
-		return;
+			// The user inputs x as 1-10 not 0-9 for indexes.
+			cont = p2.checkField(x-1,y);
+		
+		} catch (int e){
+			
+			// Exception error message
+			cout << "Error: Improper input!\nPlease enter proper input! Numbers for Rows (1-10) and Letters for columns (A-J)!\n"
+			
+		}
+		
+	} while (!p2.checkField(x, y));
+	
+	
 };
