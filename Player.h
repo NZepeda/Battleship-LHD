@@ -1,24 +1,32 @@
-//
-//  Player.h
-//  Battleship-LHD
-//
-//  Created by Nestor Zepeda on 12/3/16.
-//  Copyright © 2016 csumb-lhd. All rights reserved.
-//
+
+
+#include "Ship.h"
+#include "Grid.h"
+
+using namespace std;
 
 #ifndef Player_h
 #define Player_h
-#endif /* Player_h */
 
-class player
+
+class Player
 {
 private:
-	Player::Player();
-	Player::Player(int);
+    // Constructors
+	Player();
+	Player(int);
+    
+    // Ship array
 	Ship vessels[5];
+    
+    // Ships left
 	int ships;
+    
+    //
 	Grid track;
 	Grid field;
+    
+    // Is computer flag
 	bool comp;
 public:
 	
@@ -27,3 +35,5 @@ public:
 	
 	
 };
+
+#endif /* Player_h */
