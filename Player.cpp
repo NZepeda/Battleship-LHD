@@ -1,5 +1,6 @@
 #include "Player.h"
 #include <string.h>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -13,6 +14,12 @@ Player::Player(){
 };
 
 Player::Player(int x){
+	
+	if (x == 1){
+		comp = true;
+		hunt = true;
+	} else
+		comp = false;
 	
 	comp = (x == 0);
 	Grid track = track();
@@ -32,3 +39,4 @@ bool Player::turn(){
 bool Player::checkIfLose(){
 		return ships == 0;
 };
+

@@ -61,4 +61,14 @@ void Game::play(){
 	
 };
 	
+void Game::compTurn(){
+	
+	int x = rand() % 9 + 0;
+	int y = rand() % 9 + 0;
+	if (hunt){
+		while ()
+		
+	}
+	
+};
 

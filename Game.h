@@ -22,6 +22,8 @@ class Game {
 	void welcome();
 	void play();
 	int winner;
+	void turn();
+	void compTurn();
 	
 };
 

@@ -28,9 +28,10 @@ private:
     
     // Is computer flag
 	bool comp;
-public:
+	bool hunt;
 	
-	bool turn();
+public:
+
 	bool checkIfLose();
 	
 	
