@@ -6,8 +6,8 @@ using namespace std;
 
 Player::Player(){
 	comp = false;
-	Grid track = track();
-	Grid field = field();
+    Grid track;
+	Grid field;
 	int ships = 5;
 	Ship vessels[5];
 	
@@ -22,18 +22,22 @@ Player::Player(int x){
 		comp = false;
 	
 	comp = (x == 0);
-	Grid track = track();
-	Grid field = field();
+	Grid track;
+	Grid field;
 	int ships = 5;
 	Ship vessels[5];
 };
 
 bool Player::turn(){
-		do
-		{
+    
+    bool isTurn = false;
+    
+    do
+    {
 			//stuff;
-		} while (/*stuff goes here*/);
-		return;
+    } while (isTurn == false); /*stuff goes here*/
+
+    return isTurn;
 };
 
 bool Player::checkIfLose(){
