@@ -11,7 +11,7 @@ class Game {
 		winner = -1;
 	};
 	
-	Game::start(){
+	void Game::start(){
 		
 		welcome();
 		
@@ -21,14 +21,14 @@ class Game {
 	};
 	
 	// This will have more later
-	Game::welcome(){
+	void Game::welcome(){
 		
 		cout << "Welcome to Battleship!\n";
 		
 		
 	};
 	
-	Game::play(){
+	void Game::play(){
 		
 		// Continues infinitely until either player wins.
 		// each person takes a turn and then it checks to see if the opponent lost or not.
