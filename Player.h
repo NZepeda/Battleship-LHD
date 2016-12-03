@@ -31,7 +31,7 @@ private:
 	bool hunt;
 	
 public:
-
+    bool turn();
 	bool checkIfLose();
 	
 	

@@ -5,6 +5,12 @@
 using namespace std;
 
 // Constructor
+
+Ship::Ship(){
+    name = "";
+    size = 0;
+}
+
 Ship::Ship(int s, string n){
     name = n;
     size = s;

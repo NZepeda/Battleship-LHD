@@ -21,14 +21,14 @@ using namespace std;
 class Grid
 {
 private:
-    Grid();     //constructor
-
     char board[ROW][COL];
     char letters[8];
     char abc[10];
     char numberside[10];
     
 public:
+    Grid();     //constructor
+
     void update(int x, int y, int z);
     void display();
     bool checkmove(int x,int y);
