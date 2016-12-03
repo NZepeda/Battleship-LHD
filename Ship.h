@@ -20,6 +20,7 @@ public:
     
     // Constructor
     Ship(int, string);
+    Ship();
     
     // Getters and Setters
     int getSize();
