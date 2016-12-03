@@ -48,3 +48,30 @@ bool Player::checkIfLose()
 		return ships == 0;
 };
 
+
+void Player::attackShip(int xCoord, int yCoord){
+    
+    if(field.checkmove(xCoord, yCoord)){
+        // Check coordinates of the ships
+    }
+}
+
+void Player::setShips(){
+    
+    int x, y;
+    
+    Ship airCraftCarrier(5, "Aircraft Carrier");
+    Ship battleship(4, "Battleship");
+    Ship cruiser(3, "Cruiser");
+    Ship submarine(3, "Submarine");
+    Ship destroyer(2, "Destroyer");
+    
+    
+    cout << "Select coordinate for your Carrier ship (size: 5)" << endl;
+    cin >>
+    
+}
+
+
+
+
