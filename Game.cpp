@@ -61,6 +61,7 @@ void Game::play(){
 	
 };
 	
+<<<<<<< Updated upstream
 void Game::compTurn(){
 	
 	int x = rand() % 9 + 0;

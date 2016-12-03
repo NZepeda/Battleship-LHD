@@ -4,7 +4,8 @@
 
 using namespace std;
 
-Player::Player(){
+Player::Player()
+{
 	comp = false;
 	Grid track = track();
 	Grid field = field();
@@ -13,7 +14,8 @@ Player::Player(){
 	
 };
 
-Player::Player(int x){
+Player::Player(int x)
+{
 	
 	if (x == 1){
 		comp = true;
@@ -28,15 +30,10 @@ Player::Player(int x){
 	Ship vessels[5];
 };
 
-bool Player::turn(){
-		do
-		{
-			//stuff;
-		} while (/*stuff goes here*/);
-		return;
-};
 
-bool Player::checkIfLose(){
+
+bool Player::checkIfLose()
+{
 		return ships == 0;
 };
 
