@@ -61,15 +61,28 @@ void Game::play(){
 	
 };
 	
-<<<<<<< Updated upstream
+// The computer's AI is here, which uses a hunt and track approach.
 void Game::compTurn(){
 	
 	int x = rand() % 9 + 0;
 	int y = rand() % 9 + 0;
+	
+	// Searches the board randomly until it finds a ship
 	if (hunt){
-		while ()
 		
+		// continually gets a random number that is valid and is in an odd numbered square. 
+		// the odd number square is for an efficient algorithm of only hitting the "black" tiles
+		// on a checkerboard design.
+		while (!check(x,y) && (x % 2) == 1 && (y % 2) == 1){
+			
+			x = rand() % 9 + 0;
+			y = rand() % 9 + 0;
+		}
+		
+	} else {
+		// Smart stuff goes here
 	}
+	
 	
 };
 
