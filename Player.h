@@ -13,24 +13,17 @@
 class player
 {
 private:
+	Player::Player();
+	Player::Player(int);
 	Ship vessels[5];
-	bool check(x, y);  // does something
 	int ships;
-	grid track;
-	grid field;
+	Grid track;
+	Grid field;
+	bool comp;
 public:
-	//variables go here if any?
-	bool checkiflose()
-	{
-		return ships == 0;
-	}
-	/////////////////////////////////////////////
-	bool turn()
-	{
-		do
-		{
-			//stuff;
-		} while (/*stuff goes here*/);
-		return;
-	}
+	
+	bool turn();
+	bool checkIfLose();
+	
+	
 };
