@@ -51,13 +51,13 @@ class Game {
 			cout << "Congratulations! Player 1 won!\n";
 			
 		} else if (winner == 2){
-			cout << "Congratulations! Player 2 won!\n"
+			cout << "Congratulations! Player 2 won!\n";
 		}else {
 			// This is for making sure things aren't broken
 			cout << "You finished but you broke it\n";
 		}
 		
 		
-	}
+	};
 	
 }
