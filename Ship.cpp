@@ -83,6 +83,14 @@ void Ship::removeShipCoordinateAtIndex(int index){
     
 }
 
+vector<int> Ship::getXVector(){
+    return x;
+}
+
+vector<int> Ship::getYVector(){
+    return y;
+}
+
 
 
 

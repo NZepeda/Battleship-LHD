@@ -24,6 +24,8 @@ public:
     
     // Getters and Setters
     int getSize();
+    vector<int> getXVector();
+    vector<int> getYVector();
     
 private:
 
@@ -35,7 +37,6 @@ private:
     int findElementIndex(int);
     bool findElementInYVector(int, int);
     void removeShipCoordinateAtIndex(int);
-    
     
 };
 

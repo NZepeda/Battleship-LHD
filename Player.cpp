@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+
 using namespace std;
 
 Player::Player()
@@ -10,7 +11,7 @@ Player::Player()
     Grid track;
 	Grid field;
 	int ships = 5;
-	Ship vessels[5];
+	vector<Ship> vessels;
 	
 };
 
@@ -27,7 +28,7 @@ Player::Player(int x)
 	Grid track;
 	Grid field;
 	int ships = 5;
-	Ship vessels[5];
+	vector<Ship>vessels;
 };
 
 bool Player::turn(){
@@ -58,19 +59,97 @@ void Player::attackShip(int xCoord, int yCoord){
 
 void Player::setShips(){
     
-    int x, y;
-    
     Ship airCraftCarrier(5, "Aircraft Carrier");
     Ship battleship(4, "Battleship");
     Ship cruiser(3, "Cruiser");
     Ship submarine(3, "Submarine");
     Ship destroyer(2, "Destroyer");
     
-    
-    cout << "Select coordinate for your Carrier ship (size: 5)" << endl;
-    cin >>
+    // Add ships into our vessel vector
+    vessels.push_back(airCraftCarrier);
+    vessels.push_back(battleship);
+    vessels.push_back(cruiser);
+    vessels.push_back(submarine);
+    vessels.push_back(destroyer);
     
 }
+
+void getInputForShip(Ship ship){
+    
+    int x = 0;
+    int y = 0;
+    
+    char column;
+    char direction;
+    
+    map<char, int> letters;
+    
+    letters['A'] = 1;
+    letters['B'] = 2;
+    letters['C'] = 3;
+    letters['D'] = 4;
+    letters['E'] = 5;
+    letters['F'] = 6;
+    letters['G'] = 7;
+    letters['H'] = 8;
+    letters['I'] = 9;
+    letters['J'] = 10;
+
+    
+    cout << "Please enter beginning coordinate for your " << ship.name << endl;
+    
+    // Loop until we receive valid row number
+    do{
+        cout << "Enter row number" << endl;
+        cin >> x;
+        
+        if(x < 1 || x > 10){
+            x = 0;
+        }
+        
+    }while(x == 0);
+    
+    // Loop until we receive valid row
+    do{
+        cout << "Enter column number " << endl;
+        cin >> column;
+        
+        try{
+            y = letters[toupper(column)];
+        }catch(int e){
+            cout << "Not a valid column!" <<endl;
+        }
+    }while(y == 0);
+    
+    
+    do{
+        cout << "Do you want to place your ship vertically (v) or horizontally (h)?" <<endl;
+    
+        cin >> direction;
+        
+        if(direction != 'h' || direction != 'v'){
+            direction = 'n';
+        }
+        
+    }while(direction != 'v' && direction != 'h');
+}
+
+void Player::placeShip(Ship ship, int x, int y){
+    
+    
+    
+}
+
+bool Player::checkCoordsOfOtherShips(){
+    
+    bool noShips = true;
+    
+    for(int i = 0; i < vessels.size(); i++){
+        
+    }
+}
+
+
 
 
 

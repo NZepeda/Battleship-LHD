@@ -2,6 +2,7 @@
 
 #include "Ship.h"
 #include "Grid.h"
+#include <vector>
 
 using namespace std;
 
@@ -16,8 +17,8 @@ private:
 	Player();
 	Player(int);
     
-    // Ship array
-	Ship vessels[5];
+    // Ship vector
+	vector<Ship> vessels;
     
     // Ships left
 	int ships;
@@ -29,6 +30,10 @@ private:
     // Is computer flag
 	bool comp;
 	bool hunt;
+    
+    void setShipCoordinate(Ship);
+    void placeShip(Ship, int, int);
+    bool checkCoordsOfOtherShips();
 	
 public:
     void setShips();
