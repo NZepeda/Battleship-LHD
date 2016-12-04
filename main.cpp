@@ -9,6 +9,7 @@
 #include <fstream>
 
 string getFileContents (ifstream&);
+void printBanner();
 
 using namespace std;
 
@@ -16,6 +17,7 @@ int main(){
 	bool cont = true;
 	char input = 'n';
 	
+    printBanner();
 	do{
 		Game game;
 		game.start();
@@ -43,7 +45,7 @@ int main(){
 
 void printBanner(){
     
-    ifstream Reader ("banner.txt");             //Open file
+    ifstream Reader ("/Users/nestorzepeda/LHD/Battleship-LHD/Battleship-LHD/banner.txt");             //Open file
     
     string Art = getFileContents (Reader);       //Get file
     

@@ -91,6 +91,11 @@ vector<int> Ship::getYVector(){
     return y;
 }
 
+void Ship::place(int xCoord, int yCoord){
+    x.push_back(xCoord);
+    y.push_back(yCoord);
+}
+
 
 
 

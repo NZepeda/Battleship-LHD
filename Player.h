@@ -13,7 +13,8 @@ using namespace std;
 class Player
 {
 private:
-    
+    bool shipCanBePlaced(Ship, int, int, char);
+
     // Ship vector
 	vector<Ship> vessels;
     
@@ -29,8 +30,8 @@ private:
 	bool hunt;
     
     void setShipCoordinate(Ship);
-    bool canPlaceShip(Ship, int, int, char);
     bool checkCoordsOfOtherShips();
+    
 	
 public:
     
@@ -38,12 +39,13 @@ public:
     Player();
     Player(int);
     
+    void display();
 	bool checkField(int, int);
     void setShips();
     bool attackShip(int, int);
     bool turn();
 	bool checkIfLose();
-	
+    void getInputForShip(Ship ship);
 	
 };
 

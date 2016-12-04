@@ -10,8 +10,9 @@ Player::Player()
 	comp = false;
     Grid track;
 	Grid field;
-	int ships = 5;
-	vector<Ship> vessels;
+	ships = 5;
+    
+    setShips();
 	
 };
 
@@ -27,14 +28,13 @@ Player::Player(int x)
 	comp = (x == 0);
 	Grid track;
 	Grid field;
-	int ships = 5;
-	vector<Ship>vessels;
+	ships = 5;
 };
 
 bool Player::turn(){
     
     bool isTurn = false;
-    
+
     do
     {
 			//stuff;
@@ -42,6 +42,11 @@ bool Player::turn(){
 
     return isTurn;
 };
+
+void Player::display(){
+    track.display();
+    field.display();
+}
 
 
 bool Player::checkIfLose()
@@ -73,9 +78,49 @@ void Player::setShips(){
     vessels.push_back(submarine);
     vessels.push_back(destroyer);
     
+    for(int i = 0; i < 5; i++){
+        getInputForShip(vessels[i]);
+    }
+    
 }
 
-void getInputForShip(Ship ship){
+bool Player::shipCanBePlaced(Ship ship, int x, int y, char direction){
+    
+    bool successfullyPlaced = true;
+    
+    if(field.board[y][x] == 0){
+        
+        // chosen coordinate is open, check neighbors based on direction chosen
+        if(direction == 'h'){
+            
+            // Check horizontal neighbors
+            for(int j = y; j < ship.getSize() - 1; j++){
+                
+                if(field.board[x][j] != 0){
+                    successfullyPlaced = false;
+                }
+            }
+        }
+        else if(direction == 'v'){
+            // Check vertical neighbors
+            for(int i = y; i < ship.getSize() - 1; i++){
+                
+                if(field.board[i][y] != 0){
+                    successfullyPlaced = false;
+                }
+            }
+            
+        }
+        else{
+            // Handle error here
+        }
+    }
+    
+    return successfullyPlaced;
+}
+
+
+void Player::getInputForShip(Ship ship){
     
     int x = 0;
     int y = 0;
@@ -107,16 +152,24 @@ void getInputForShip(Ship ship){
         if(x < 1 || x > 10){
             x = 0;
         }
+        if(x + ship.getSize() - 2 > 10){
+            x = 0;
+        }
         
     }while(x == 0);
     
     // Loop until we receive valid row
     do{
-        cout << "Enter column number " << endl;
-        cin >> column;
-        
         try{
+            cout << "Enter column number " << endl;
+            cin >> column;
+    
             y = letters[toupper(column)];
+            
+            if(y + ship.getSize() > 10){
+                y = 0;
+            }
+            
         }catch(int e){
             cout << "Not a valid column!" <<endl;
         }
@@ -128,40 +181,30 @@ void getInputForShip(Ship ship){
     
         cin >> direction;
         
-        if(direction != 'h' || direction != 'v'){
+        if(direction != 'h' && direction != 'v'){
             direction = 'n';
         }
         
     }while(direction != 'v' && direction != 'h');
-}
-
-bool Player::canPlaceShip(Ship ship, int x, int y, char direction){
     
-    bool successfullyPlaced = true;
-    
-    if(field.board[y][x] == 0){
+    if(shipCanBePlaced(ship, x, y, direction)){
         
-        // chosen coordinate is open, check neighbors based on direction chosen
-        if(direction == 'h'){
+        
+        for(int i= 0; i < ship.getSize(); i++){
             
-            // Check horizontal neighbors
-            for(int j = y; j < ship.getSize() - 1; j++){
-                
-                if(field.board[j][x] != 0){
-                    successfullyPlaced = false;
-                }
+            if(direction == 'v'){
+               ship.place(x, y + i);
+                field.update(x, y+ i, 3);
             }
-        }
-        else if(direction == 'v'){
-            // Check vertical neighbors
-        }
-        else{
-            // Handle error here
+            else{
+               ship.place(x + i, y);
+                field.update(x + i, y, 3);
+            }
+            
         }
     }
-    
-    return successfullyPlaced;
 }
+
 
 bool Player::checkCoordsOfOtherShips(){
     

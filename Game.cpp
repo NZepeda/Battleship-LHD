@@ -8,8 +8,7 @@ using namespace std;
 
 	
 Game::Game(){
-	Player p1;
-	Player p2;
+
 	winner = -1;
 	cLastX = 0;
 	cLastY = 0;
@@ -18,7 +17,7 @@ Game::Game(){
 void Game::start(){
 	
 	welcome();
-	
+    
 	play();
 	
 	
@@ -39,12 +38,12 @@ void Game::play(){
 	while (true){
 		
 		turn();
-		if (p2().checkIfLose()){
+		if (p2.checkIfLose()){
 			winner = 1;
 			break;
 		}
 		compTurn();
-		if (p1().checkIfLose()){
+		if (p1.checkIfLose()){
 			winner = 2;
 			break;
 		}
@@ -71,13 +70,13 @@ void Game::compTurn(){
 	
 	if(!hunt){
 		
-		if ( x > 0 && p1().checkField(x-1,y))
+		if ( x > 0 && p1.checkField(x-1,y))
 			x--;
-		else if ( x < 10 && p1().checkField(x+1, y))
+		else if ( x < 10 && p1.checkField(x+1, y))
 			x++;
-		else if (y > 0 && p1().checkField(x, y-1))
+		else if (y > 0 && p1.checkField(x, y-1))
 			y--;
-		else if (y < 10 && p1().checkField(x, y+1))
+		else if (y < 10 && p1.checkField(x, y+1))
 			y++;
 		else {
 			hunt = true;
@@ -104,11 +103,11 @@ void Game::compTurn(){
 			else 
 				y = odd[rand() % 4 + 0];
 			
-		}while (!p1().checkField(x,y));
+		}while (!p1.checkField(x,y));
 		
 	} 
 	
-	if (p1().attackShip(x,y)){
+	if (p1.attackShip(x,y)){
 		hunt = false;
 		cLastX = x;
 		cLastY = y;
@@ -122,6 +121,9 @@ void Game::turn()
 	int x, y = -1;
 	char answer;
 	bool cont = true;
+    
+    p2.display();
+    
 	// Continually asks the user until they input correct input.
 	do
 	{
@@ -149,7 +151,7 @@ void Game::turn()
 			}
 
 			// The user inputs x as 1-10 not 0-9 for indexes.
-			cont = p2().checkField(x-1,y);
+			cont = p2.checkField(x-1,y);
 		
 		} catch (int e){
 			
@@ -158,7 +160,7 @@ void Game::turn()
 			
 		}
 		
-	} while (!p2().checkField(x, y));
+	} while (!p2.checkField(x, y));
 	
 	
 };

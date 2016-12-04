@@ -17,8 +17,8 @@ class Game {
 	void start();
 	
 	private:
-	Player p1();
-	Player p2();
+	Player p1;
+	Player p2;
 	void welcome();
 	void play();
 	int winner;
