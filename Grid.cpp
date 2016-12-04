@@ -7,7 +7,7 @@
 //
 
 #include "Grid.h"
-
+#include <iostream>
 
     
 Grid::Grid()
@@ -25,35 +25,38 @@ Grid::Grid()
     
     char abc[11]={'0','A', 'B', 'C', 'D', 'E','F','G','H', 'I', 'J'};
    
-    
-    board[0][0] = ' ';  //sets empty spot on corner
 }
 
 
     void Grid::display()
     {
+		cout << " ";
         for (int k = 1; k<11; k++){  //for loop for num 1-10
         
-        board[0][k]=k;
-            board[k][0]= abc[k];
+        cout << i << " "
         }
-    
-        for (int i=0; i<11; i++){   //for letters on side of grid
-            //cout << abc[i];
+		
+		cout << endl;
+		// Make the column headers a little seperated from the grid.
+		cout << "-------------------------------------\n";
+        
+		for (int i=0; i<10; i++){   //for letters on side of grid
+            cout << abc[i+1] << "|";
             
             for (int j=0; j < 11; j++){
-                cout <<letters[board[i][j]];
+                cout << " " << letters[board[i][j]];
             }
+			cout << "|\n";
         }
     
+		cout << "--------------------------------------\n";
+		
     }
-
-    //
 
     bool Grid:: checkmove( int x, int y)   //check for move availability
     {
         
-        if (board[x][y] != 'H'||'M')
+        if (board[y][x] != 'H' || board[y][x] 'M')
         {
             return true;
         }
@@ -62,9 +65,11 @@ Grid::Grid()
     
     }
 
+	// updates the grid at the x y coordinate to the number stored in z
+	// z represents the cooresponding letter in the letters array
     void Grid::update(int x, int y, int z)
     {
-        board[x][y]=letters[z];
+        board[y][x] = z;
     }
 
 #endif /* Grid_h */
