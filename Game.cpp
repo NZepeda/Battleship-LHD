@@ -8,8 +8,8 @@ using namespace std;
 
 	
 Game::Game(){
-	Player p1();
-	Player p2();
+	Player p1;
+	Player p2;
 	winner = -1;
 	cLastX = 0;
 	cLastY = 0;
@@ -38,13 +38,13 @@ void Game::play(){
 	// each person takes a turn and then it checks to see if the opponent lost or not.
 	while (true){
 		
-		p1.turn();
-		if (p2.checkIfLose()){
+		turn();
+		if (p2().checkIfLose()){
 			winner = 1;
 			break;
 		}
-		p2.turn();
-		if (p1.checkIfLose()){
+		compTurn();
+		if (p1().checkIfLose()){
 			winner = 2;
 			break;
 		}
@@ -71,13 +71,13 @@ void Game::compTurn(){
 	
 	if(!hunt){
 		
-		if ( x > 0 && p1.checkField(x-1,y))
+		if ( x > 0 && p1().checkField(x-1,y))
 			x--;
-		else if ( x < 10 && p1.checkField(x+1, y))
+		else if ( x < 10 && p1().checkField(x+1, y))
 			x++;
-		else if (y > 0 && p1.checkField(x, y-1))
+		else if (y > 0 && p1().checkField(x, y-1))
 			y--;
-		else if (y < 10 && p1.checkField(x, y+1))
+		else if (y < 10 && p1().checkField(x, y+1))
 			y++;
 		else {
 			hunt = true;
@@ -104,11 +104,11 @@ void Game::compTurn(){
 			else 
 				y = odd[rand() % 4 + 0];
 			
-		}while (!p1.checkField(x,y));
+		}while (!p1().checkField(x,y));
 		
 	} 
 	
-	if (p1.attackShips(x,y)){
+	if (p1().attackShip(x,y)){
 		hunt = false;
 		cLastX = x;
 		cLastY = y;
@@ -137,7 +137,7 @@ void Game::turn()
 			
 			// Gets the number from the letter if they gave proper input
 			for (int i = 0; i < 10; i++){
-				if (abc[i] == toUpper(answer)
+				if (abc[i] == toupper(answer))
 					y = i;
 				
 			}
@@ -149,16 +149,16 @@ void Game::turn()
 			}
 
 			// The user inputs x as 1-10 not 0-9 for indexes.
-			cont = p2.checkField(x-1,y);
+			cont = p2().checkField(x-1,y);
 		
 		} catch (int e){
 			
 			// Exception error message
-			cout << "Error: Improper input!\nPlease enter proper input! Numbers for Rows (1-10) and Letters for columns (A-J)!\n"
+			cout << "Error: Improper input!\nPlease enter proper input! Numbers for Rows (1-10) and Letters for columns (A-J)!\n";
 			
 		}
 		
-	} while (!p2.checkField(x, y));
+	} while (!p2().checkField(x, y));
 	
 	
 };

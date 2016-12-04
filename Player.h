@@ -13,9 +13,6 @@ using namespace std;
 class Player
 {
 private:
-    // Constructors
-	Player();
-	Player(int);
     
     // Ship vector
 	vector<Ship> vessels;
@@ -36,6 +33,11 @@ private:
     bool checkCoordsOfOtherShips();
 	
 public:
+    
+    // Constructors
+    Player();
+    Player(int);
+    
 	bool checkField(int, int);
     void setShips();
     bool attackShip(int, int);

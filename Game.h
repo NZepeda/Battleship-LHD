@@ -13,7 +13,7 @@
 
 class Game {
 	public:
-	Game::Game();
+	Game();
 	void start();
 	
 	private:
@@ -26,6 +26,7 @@ class Game {
 	void compTurn();
 	int cLastX;
 	int cLastY;
+    bool hunt;
 	
 	
 };
