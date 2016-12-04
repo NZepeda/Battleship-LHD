@@ -24,6 +24,9 @@ class Game {
 	int winner;
 	void turn();
 	void compTurn();
+	int cLastX;
+	int cLastY;
+	
 	
 };
 

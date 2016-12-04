@@ -11,6 +11,8 @@ Game::Game(){
 	Player p1();
 	Player p2();
 	winner = -1;
+	cLastX = 0;
+	cLastY = 0;
 };
 
 void Game::start(){
@@ -65,25 +67,52 @@ void Game::play(){
 // The computer's AI is here, which uses a hunt and track approach.
 void Game::compTurn(){
 	
-	int x = rand() % 9 + 0;
-	int y = rand() % 9 + 0;
+	int x = cLastX, y = cLastY;
+	
+	if(!hunt){
+		
+		if ( x > 0 && p2.checkField(x-1,y))
+			x--;
+		else if ( x < 10 && p2.checkField(x+1, y))
+			x++;
+		else if (y > 0 && p2.checkField(x, y-1))
+			y--;
+		else if (y < 10 && p2.checkField(x, y+1))
+			y++;
+		else {
+			hunt = true;
+		}
+		
+	}
 	
 	// Searches the board randomly until it finds a ship
 	if (hunt){
 		
+		// Used to make finding odd squares easier
+		int odd[5] = {1, 3, 5, 7, 9};
+		
+		// User to make finding even squares easier
+		int even[5] = {0, 2, 4, 6, 8};
+		
 		// continually gets a random number that is valid and is in an odd numbered square. 
 		// the odd number square is for an efficient algorithm of only hitting the "black" tiles
 		// on a checkerboard design.
-		while (!check(x,y) && (x % 2) == 1 && (y % 2) == 1){
-			
+		do{
 			x = rand() % 9 + 0;
-			y = rand() % 9 + 0;
-		}
+			if (x % 2 == 0)
+				y = even[rand() % 4 + 0];
+			else 
+				y = odd[rand() % 4 + 0];
+			
+		}while (!p2.checkField(x,y));
 		
-	} else {
-		// Smart stuff goes here
-	}
+	} 
 	
+	if (p2.attackShips(x,y)){
+		hunt = false;
+		cLastX = x;
+		cLastY = y;
+	}
 	
 };
 
