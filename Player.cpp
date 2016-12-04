@@ -134,10 +134,32 @@ void getInputForShip(Ship ship){
     }while(direction != 'v' && direction != 'h');
 }
 
-void Player::placeShip(Ship ship, int x, int y){
+bool Player::canPlaceShip(Ship ship, int x, int y, char direction){
     
+    bool successfullyPlaced = true;
     
+    if(field.board[y][x] == 0){
+        
+        // chosen coordinate is open, check neighbors based on direction chosen
+        if(direction == 'h'){
+            
+            // Check horizontal neighbors
+            for(int j = y; j < ship.getSize() - 1; j++){
+                
+                if(field.board[j][x] != 0){
+                    successfullyPlaced = false;
+                }
+            }
+        }
+        else if(direction == 'v'){
+            // Check vertical neighbors
+        }
+        else{
+            // Handle error here
+        }
+    }
     
+    return successfullyPlaced;
 }
 
 bool Player::checkCoordsOfOtherShips(){
@@ -147,6 +169,8 @@ bool Player::checkCoordsOfOtherShips(){
     for(int i = 0; i < vessels.size(); i++){
         
     }
+    
+    return noShips;
 }
 
 

@@ -6,6 +6,9 @@
 
 #include "Game.h"
 #include <ctype.h>
+#include <fstream>
+
+string getFileContents (ifstream&);
 
 using namespace std;
 
@@ -14,7 +17,7 @@ int main(){
 	char input = 'n';
 	
 	do{
-		Game game();
+		Game game;
 		game.start();
 		
 		while (cont){
@@ -36,4 +39,37 @@ int main(){
 		
 	} while(input != 'n');
 	return 0;
+}
+
+void printBanner(){
+    
+    ifstream Reader ("banner.txt");             //Open file
+    
+    string Art = getFileContents (Reader);       //Get file
+    
+    cout << Art << std::endl;               //Print it to the screen
+    
+    Reader.close ();                           //Close file
+}
+
+string getFileContents (ifstream& File)
+{
+    std::string Lines = "";        //All lines
+    
+    if (File)                      //Check if everything is good
+    {
+        while (File.good ())
+        {
+            std::string TempLine;                  //Temp line
+            std::getline (File , TempLine);        //Get temp line
+            TempLine += "\n";                      //Add newline character
+            
+            Lines += TempLine;                     //Add newline
+        }
+        return Lines;
+    }
+    else                           //Return error
+    {
+        return "ERROR File does not exist.";
+    }
 }

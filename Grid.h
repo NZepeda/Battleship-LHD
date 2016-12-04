@@ -21,10 +21,12 @@ using namespace std;
 class Grid
 {
 private:
-    char board[ROW][COL];
+    
     char letters[8];
     char abc[10];
     char numberside[10];
+    
+    void initializeGrid();
     
 public:
     Grid();     //constructor
@@ -33,6 +35,7 @@ public:
     void display();
     bool checkmove(int x,int y);
     
+    int board[ROW][COL];
 };
 
 #endif /* Grid_h */

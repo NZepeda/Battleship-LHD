@@ -25,6 +25,20 @@ Grid::Grid()
     
     char abc[11]={'0','A', 'B', 'C', 'D', 'E','F','G','H', 'I', 'J'};
    
+    initializeGrid();
+    
+}
+
+// Initializes our grid 
+void Grid::initializeGrid(){
+    
+    for(int i = 0; i < 10; i++){
+        
+        for(int j = 0; j < 10; j++){
+            board[i][j] = 0;
+        }
+    }
+    
 }
 
 
@@ -33,7 +47,7 @@ Grid::Grid()
 		cout << " ";
         for (int k = 1; k<11; k++){  //for loop for num 1-10
         
-        cout << i << " "
+            cout << k << " ";
         }
 		
 		cout << endl;
@@ -56,7 +70,7 @@ Grid::Grid()
     bool Grid:: checkmove( int x, int y)   //check for move availability
     {
         
-        if (board[y][x] != 'H' || board[y][x] 'M')
+        if (board[y][x] != 1 || board[y][x] != 2)
         {
             return true;
         }

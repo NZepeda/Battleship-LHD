@@ -32,7 +32,7 @@ private:
 	bool hunt;
     
     void setShipCoordinate(Ship);
-    void placeShip(Ship, int, int);
+    bool canPlaceShip(Ship, int, int, char);
     bool checkCoordsOfOtherShips();
 	
 public:
