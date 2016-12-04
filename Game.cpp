@@ -71,13 +71,13 @@ void Game::compTurn(){
 	
 	if(!hunt){
 		
-		if ( x > 0 && p2.checkField(x-1,y))
+		if ( x > 0 && p1.checkField(x-1,y))
 			x--;
-		else if ( x < 10 && p2.checkField(x+1, y))
+		else if ( x < 10 && p1.checkField(x+1, y))
 			x++;
-		else if (y > 0 && p2.checkField(x, y-1))
+		else if (y > 0 && p1.checkField(x, y-1))
 			y--;
-		else if (y < 10 && p2.checkField(x, y+1))
+		else if (y < 10 && p1.checkField(x, y+1))
 			y++;
 		else {
 			hunt = true;
@@ -104,11 +104,11 @@ void Game::compTurn(){
 			else 
 				y = odd[rand() % 4 + 0];
 			
-		}while (!p2.checkField(x,y));
+		}while (!p1.checkField(x,y));
 		
 	} 
 	
-	if (p2.attackShips(x,y)){
+	if (p1.attackShips(x,y)){
 		hunt = false;
 		cLastX = x;
 		cLastY = y;

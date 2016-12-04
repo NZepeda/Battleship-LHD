@@ -50,11 +50,12 @@ bool Player::checkIfLose()
 };
 
 
-void Player::attackShip(int xCoord, int yCoord){
+bool Player::attackShip(int xCoord, int yCoord){
     
     if(field.checkmove(xCoord, yCoord)){
         // Check coordinates of the ships
     }
+	return true;
 }
 
 void Player::setShips(){
@@ -173,6 +174,10 @@ bool Player::checkCoordsOfOtherShips(){
     return noShips;
 }
 
+bool Player::checkField(int x, int y){
+	
+	return field.checkmove(x,y);
+}
 
 
 

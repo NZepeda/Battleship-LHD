@@ -36,8 +36,9 @@ private:
     bool checkCoordsOfOtherShips();
 	
 public:
+	bool checkField(int, int);
     void setShips();
-    void attackShip(int, int);
+    bool attackShip(int, int);
     bool turn();
 	bool checkIfLose();
 	
