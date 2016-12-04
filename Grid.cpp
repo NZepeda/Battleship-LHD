@@ -72,4 +72,3 @@ Grid::Grid()
         board[y][x] = z;
     }
 
-#endif /* Grid_h */
